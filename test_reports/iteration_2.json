@@ -1,0 +1,59 @@
+{
+  "summary": "Full test of Velora Admin Products feature. Backend: 32/32 pytest passing (17 legacy + 15 new for /api/products + /api/admin/products CRUD & auth). Frontend: verified admin login, tab switching, product list rendering (117 rows), price edit + save + persist across reload, stock toggle, add-product dialog, edit dialog prefill + save, delete flow, price/stock reflection on public catalog + PDP, out-of-stock overlay/badge + Sold-out disabled button on ProductCard, PDP Sold-Out state, PDP single product-main-image on pista-plain-roasted and black-pepper (desktop 1440 & mobile 412 — exactly 1 image in the gallery container, no thumbnails), keyword alias search (badam→Almonds, elaichi→Cardamom). Found 2 real UI bugs and 1 minor code-quality issue (see below). Cleaned up all TEST_ products; reverted price/stock mutations. Catalog back to 117.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "ProductCatalog.jsx",
+        "issue": "CRITICAL runtime ReferenceError: 'PRODUCTS is not defined' at line 28 — homepage catalog was completely broken (0 testids, blank cream page). PRODUCTS.length is used to display the '{count}+ handpicked products' headline but PRODUCTS was never imported. I applied a minimal fix (added `import { PRODUCTS } from \"@/data/products\";`) to unblock testing. Consider using dynamic `products.length` from the context instead so the count auto-updates when admin adds/removes products.",
+        "selector": "components/ProductCatalog.jsx line 28",
+        "priority": "HIGH"
+      },
+      {
+        "component": "AdminProducts.jsx / PriceCell",
+        "issue": "After editing a product's price through the Add/Edit dialog (pa-price + pa-save), the toast says 'Product updated' and the DB is updated (verified via API, price=777) but the row's price-input in the table still shows the OLD value (555). Root cause: PriceCell holds its own `useState(product.price)` which initialises once and never re-syncs when the parent replaces the product in state. Fix: add `useEffect(() => setValue(product.price), [product.price])` inside PriceCell, or key it on product.price. Inline-edit + save works fine because the same component owns the change.",
+        "selector": "components/AdminProducts.jsx PriceCell (line ~21-65)",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "PDP hydration flash",
+        "issues": [
+          "On product detail pages, the static-fallback price is briefly shown (~200-400ms) before the DB fetch overrides it. Not a bug per se (fallback is intentional) but if the seeded static price differs from live DB price, users see a flash. Consider showing a loading skeleton or waiting for context to hydrate before rendering price."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_velora_api.py",
+    "/app/backend/tests/test_products_admin.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "HIGH: Fix PriceCell stale value — add `useEffect(() => setValue(product.price), [product.price])` in /app/frontend/src/components/AdminProducts.jsx (PriceCell component) so the input re-syncs when the parent replaces the product after the dialog save.",
+    "HIGH-alt: (already patched by testing agent) Confirm /app/frontend/src/components/ProductCatalog.jsx now imports PRODUCTS. Better long-term fix: use `products.length` from the ProductsContext hook so headline count updates with DB.",
+    "LOW: Consider consistent styled AlertDialog instead of window.confirm() for both admin subscriber-delete and product-delete."
+  ],
+  "critical_code_review_comments": [
+    "server.py — clean, correct auth guard, unique slug generation with retry loop, MongoDB _id excluded from all responses, 404/400/401 codes correct, seed-if-empty only runs when collection is empty (idempotent).",
+    "AdminProducts.jsx — PriceCell has stale-state bug (see UI bugs). Also editing the same product via dialog while a dirty price edit is pending in PriceCell would overwrite user input; consider making PriceCell fully controlled from parent.",
+    "ProductsContext.jsx — never re-fetches after admin mutations from a different tab. Site is only updated after full page reload. Acceptable, but a `reload()` after admin save on the same tab would improve UX (currently AdminProducts replaces local state only, doesn't tell ProductsContext to reload).",
+    "ProductCatalog.jsx — headline uses static PRODUCTS.length instead of dynamic products.length; will not update as admin adds new products until the frontend source is rebuilt.",
+    "Frontend — search input testid 'product-search-input' only mounts inside ProductCatalog which is at bottom of home; that's fine, no blocking issue.",
+    "All admin endpoints have consistent X-Admin-Token check via _require_admin — reused, DRY.",
+    "Backend tests: 32/32 green in 3.2s including auth, CRUD, slug uniqueness, sort order, empty-payload 400, non-existent 404."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_products_admin.py (new — 15 tests: list, auth, CRUD, cleanup)",
+    "/app/frontend/src/components/ProductCatalog.jsx (added missing `import { PRODUCTS } from \"@/data/products\";` — homepage was crashing without this)"
+  ],
+  "success_rate": { "backend": "100% (32/32)", "frontend": "~90% — all flows verified; 2 real bugs found (1 fixed by me, 1 open)" },
+  "test_credentials": "Admin token: velora-admin-2026 (X-Admin-Token header). Admin URL: /admin",
+  "seed_data_creation": "Tests create products with names prefixed 'TEST_' or 'TEST-UI' and category 'TEST/TEST_Category/TEST-UI'; cleanup fixture + explicit deletes ensure catalog returns to exactly 117 seeded products. Price/stock mutations on real products (Almond Regular, Black Pepper) were reverted after each check.",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Backend tests: `pytest /app/backend/tests/ -v` (32 tests, ~3s). Public URL: https://velora-dry-fruits.preview.emergentagent.com. Admin token: velora-admin-2026. Key selectors for admin: admin-token-input, admin-login-btn, admin-tab-products, admin-tab-subscribers, admin-add-product-btn, admin-product-search, admin-product-refresh, product-admin-row-{id}, product-price-input-{id}, product-price-save-{id}, product-stock-toggle-{id}, product-edit-{id}, product-delete-{id}, pa-name, pa-category, pa-price, pa-image, pa-instock, pa-featured, pa-isgift, pa-save, product-form-dialog. Site: product-search-input, product-card-{id}, product-name-{id}, product-price-{id}, out-of-stock-badge-{id}, product-add-cart-{id}. PDP: product-main-image (must be exactly 1), pdp-price, pdp-add-to-cart, pdp-buy-now. The homepage requires ~4s for JSbundle + context fetch; use wait_testid helper and re-poll text_content to avoid reading the static-fallback price before DB hydration.",
+  "rca_of_the_issue": "Bug 1 (blank homepage): ProductCatalog.jsx referenced PRODUCTS without importing it, causing a ReferenceError inside render → React unmounts everything below. Fix: added missing import. Bug 2 (stale price after dialog edit): PriceCell derives initial state from product.price only on mount; parent's replaceInList updates the product prop but the child's useState is not reset. Fix: `useEffect(() => setValue(product.price), [product.price])` inside PriceCell. Reproduction: Admin > Products > Edit any product > change price > Save > observe row's price input still shows old value while toast says 'Product updated' and API returns new price. Data is safe; UI stale until reload."
+}

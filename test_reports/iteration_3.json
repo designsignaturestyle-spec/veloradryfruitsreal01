@@ -1,0 +1,31 @@
+{
+  "summary": "Regression test after code-quality fixes on Velora Dry Fruits. Backend: 32/32 pytest passing (test_velora_api.py + test_products_admin.py). Frontend: PDP (pista-plain-roasted & almond-regular) load, single product-main-image, price and Usage Suggestions render as plain text (no HTML entities/tags — verified innerHTML === textContent). Homepage catalog renders 32 cards (featured + catalog), no console errors, keyword alias search filters correctly (badam→Almonds, elaichi→Cardamom shown as only visible catalog card). Cart: add works, persisted in localStorage (velora_cart_v2) after full page reload, drawer opens showing item + subtotal ₹1,250. Newsletter: POST /api/newsletter/subscribe → 200 OK, success state (data-testid=newsletter-success) visible. Admin: login with velora-admin-2026, Products tab lists 117 rows, inline price edit + save persists and re-renders correctly, stock toggle works with success toast, Subscribers tab loads. Cleaned test subscriber. No regressions detected.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_velora_api.py",
+    "/app/backend/tests/test_products_admin.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "ProductDetail.jsx L222 — usage now rendered as plain text via {product.usage}. Verified DOM innerHTML equals textContent, no HTML/entities leaking. Fix is correct and eliminates the XSS surface from dangerouslySetInnerHTML.",
+    "ProductsContext.jsx — console.error on API failure with static fallback is appropriate (site never breaks). No regressions.",
+    "CartContext.jsx — try/catch around localStorage read + write with console.warn is safe; will not break in private/Safari-quota scenarios. Cart persistence verified end-to-end.",
+    "Newsletter.jsx — network error path now console.warn + local cache. Happy path unaffected (verified 200 OK + success state render).",
+    "Backend tests read ADMIN_TOKEN from env with default 'velora-admin-2026' — matches /app/backend/.env; tests are portable.",
+    "Note (pre-existing, not in this scope): AdminProducts.jsx PriceCell dialog-edit stale-value bug from iteration_2 still present. Inline edit works correctly; only Add/Edit dialog save leaves stale row until reload."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "100% (32/32)", "frontend": "100% — all regression flows pass" },
+  "test_credentials": "Admin token: velora-admin-2026 (X-Admin-Token header). Admin URL: /admin",
+  "seed_data_creation": "One newsletter subscriber test_regression_1783759445@velora-test.com created during flow test and DELETED via admin API after verification. Product price edited by 1 on Almond Regular (1060→1061→reverted). Stock toggled on Almond Regular and reverted. No leftover TEST_ products (this run did not create any product records via UI).",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All code-quality fixes verified with no regressions. Pre-existing bug from iteration_2 (PriceCell stale state after dialog edit in AdminProducts.jsx) still open — was outside this scope. Backend pytest: `pytest /app/backend/tests/ -v` (~3s). Public URL: https://velora-dry-fruits.preview.emergentagent.com.",
+  "rca_of_the_issue": "N/A — no bugs found in this regression run."
+}

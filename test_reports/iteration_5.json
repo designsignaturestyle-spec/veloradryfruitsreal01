@@ -1,0 +1,33 @@
+{
+  "summary": "Frontend regression after React 19 -> ^18.3.1 downgrade (react + react-dom both 18.3.1; react-router-dom 7.5.1; react-day-picker 8.10.1; date-fns ^3.6.0). Verified the app end-to-end on the public preview URL. No white screen, no ReactDOM.createRoot/hydration/hook errors, and zero console/page errors across all critical flows. Every requested feature works.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "features_verified": [
+    "App loads under React 18: window.React not exposed globally (expected in CRA), no createRoot/hydration warnings, 0 console errors, 0 page errors.",
+    "Homepage renders all sections: hero, categories (25 category tiles), featured carousel (8 bestsellers), catalog grid (32 product cards initially), newsletter, footer, floating WhatsApp button. (Note: sections don't carry data-testid='hero-section' etc., but content renders correctly.)",
+    "Catalog search: 'badam' -> 13 cards, 'elaichi' -> 9 cards (filtered from 32).",
+    "PDP /product/pista-plain-roasted: H1 'Pista Plain Roasted', single hero image, weight selector present with 4 options; price scales correctly across weights (100G ₹275 / 250G ₹688 / 500G ₹1,375 / 1KG ₹2,750). Add to Cart works — drawer opens, subtotal ₹2,750, toast 'Pista Plain Roasted (1kg) added to cart'.",
+    "Cart persistence: velora_cart_v2 written to localStorage; after full reload cart drawer reopens with subtotal ₹2,750 preserved.",
+    "Hamper builder /build-hamper: page renders, 'Add Item' opens picker dialog (108 product items), selecting an item adds to slot 1 (Almond Regular ₹265), summary computes Items ₹265 + Custom packaging ₹250 = TOTAL ₹515. Toast 'Almond Regular added to hamper' shown.",
+    "Admin /admin: token login with 'velora-admin-2026' succeeds. Products tab lists 117 rows. Inline price edit works — changed Almond Regular 1060 -> 1065, Save button appears on dirty, click persists (verified new value 1065), then reverted via API back to 1060. Stock toggle (data-testid product-stock-toggle-<id>) toggles 'In stock' <-> 'Out of stock' and reverts cleanly. Add Product button + 117 Edit + 117 Delete buttons all present.",
+    "Admin Subscribers tab: 2 pre-existing subscribers listed with correctly formatted dates '9 Jun 2026, 2:34 pm' / '9 Jun 2026, 2:32 pm'. Search + Refresh + Export CSV + Delete all functional; TEST subscriber created during newsletter test was deleted via UI (toast 'Subscriber removed').",
+    "Newsletter subscribe from homepage: input accepts email, submit yields success toast \"You're subscribed!\"."
+  ],
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Home page top-level sections (hero, categories, featured carousel, catalog, newsletter, whatsapp-float) do NOT carry the data-testid values one would expect (e.g., 'hero-section', 'categories-section', 'featured-carousel', 'catalog-section', 'newsletter-section', 'whatsapp-float'). Content is present, but automated section-level assertions have to fall back to structural/text selectors. Suggest adding these data-testid anchors on the top-level <section> elements to harden future regression tests."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "not tested (out of scope)", "frontend": "100% - all 8 requested regression flows pass under React 18.3.1" },
+  "test_credentials": "Admin token: velora-admin-2026 (X-Admin-Token header). Admin URL: /admin.",
+  "seed_data_creation": "One TEST newsletter subscriber (TEST-nl-1783844610@velora.in) was created during the newsletter flow and then deleted via Admin > Subscribers UI. One price edit to Almond Regular (id 0c89334e-...) 1060 -> 1065 was persisted by the UI test; restored to 1060 via PUT /api/admin/products/{id} using the admin token. Net state: identical to pre-test.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "React 18.3.1 downgrade is regression-clean. All prior features from iteration_2/3/4 continue to work. The only historical open item is the AdminProducts PriceCell dialog-edit stale-value UX bug carried from iteration_2 (not in scope here and not reproduced in the inline-edit path used in this run).",
+  "rca_of_the_issue": "N/A - no bugs found. The React 19 -> 18.3.1 downgrade is transparent to this codebase because src/index.js already uses the createRoot API (React 18 compatible), no code path depends on React 19-only features (use()/useActionState/useOptimistic/Server Actions/etc.), and every runtime dependency (react-router-dom 7.5.1, react-dom 18.3.1, radix-ui suite, react-day-picker 8.10.1, date-fns 3.6.0, @tanstack/react-query 5) is compatible with React 18."
+}

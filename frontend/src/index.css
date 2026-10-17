@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Manrope:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Velora Luxury Palette — Emerald + Gold + Black Marble + White */
+  --velora-forest: #052b1d;       /* deep emerald used for surfaces */
+  --velora-green: #0b4830;
+  --velora-emerald: #0b8a4f;      /* signature emerald accent */
+  --velora-parrot: #1da97a;
+  --velora-gold: #c9a14a;
+  --velora-gold-bright: #f0d684;
+  --velora-cream: #f7f1e1;
+  --velora-cream-soft: #fdfaf2;
+  --velora-marble: #0a0a0c;       /* black marble base */
+  --velora-marble-soft: #18181d;
+  --velora-ink: #0a1a12;
+  --velora-ink-soft: #2c4136;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--velora-cream);
+  color: var(--velora-ink);
+}
+
+.font-display {
+  font-family: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+::selection { background-color: var(--velora-gold); color: var(--velora-forest); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--velora-cream-soft); }
+::-webkit-scrollbar-thumb { background: var(--velora-forest); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--velora-green); }
+
+@layer base {
+  :root {
+    --background: 44 56% 93%;
+    --foreground: 142 36% 10%;
+    --card: 44 60% 97%;
+    --card-foreground: 142 36% 10%;
+    --popover: 44 60% 97%;
+    --popover-foreground: 142 36% 10%;
+    --primary: 142 47% 14%;
+    --primary-foreground: 44 56% 93%;
+    --secondary: 44 40% 88%;
+    --secondary-foreground: 142 36% 10%;
+    --muted: 44 30% 90%;
+    --muted-foreground: 142 12% 28%;
+    --accent: 42 53% 54%;
+    --accent-foreground: 142 47% 14%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 44 22% 80%;
+    --input: 44 22% 80%;
+    --ring: 42 53% 54%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+  h1, h2, h3, h4 { font-family: "Fraunces", Georgia, serif; }
+}
+
+.bg-velora-grain {
+  background-color: var(--velora-cream-soft);
+  background-image:
+    radial-gradient(at 20% 10%, rgba(11,138,79,0.07) 0px, transparent 50%),
+    radial-gradient(at 80% 90%, rgba(201,161,74,0.10) 0px, transparent 50%);
+}
+
+.bg-marble {
+  background:
+    radial-gradient(at 20% 20%, rgba(201,161,74,0.10) 0, transparent 45%),
+    radial-gradient(at 80% 80%, rgba(11,138,79,0.10) 0, transparent 50%),
+    linear-gradient(180deg, #0a0a0c, #18181d);
+  position: relative;
+}
+.bg-marble::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(115deg, transparent 35%, rgba(201,161,74,0.10) 35.5%, transparent 36%),
+    linear-gradient(105deg, transparent 60%, rgba(255,225,160,0.06) 60.5%, transparent 61%),
+    linear-gradient(125deg, transparent 78%, rgba(201,161,74,0.07) 78.5%, transparent 79%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.bg-forest-deep {
+  background:
+    radial-gradient(at 15% 20%, rgba(11,138,79,0.22) 0, transparent 45%),
+    radial-gradient(at 85% 80%, rgba(201,161,74,0.18) 0, transparent 50%),
+    var(--velora-forest);
+}
+
+.gold-divider { height: 2px; background: linear-gradient(90deg, transparent, var(--velora-gold), transparent); }
+.gold-text { color: var(--velora-gold); }
+.forest-text { color: var(--velora-forest); }
+
+.card-luxury {
+  background: #ffffff;
+  border: 1px solid rgba(14, 59, 37, 0.08);
+  box-shadow: 0 1px 0 rgba(14,59,37,0.04), 0 14px 40px -20px rgba(14,59,37,0.18);
+  transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, border-color .4s;
+}
+.card-luxury:hover {
+  transform: translateY(-4px);
+  border-color: var(--velora-gold);
+  box-shadow: 0 1px 0 rgba(14,59,37,0.04), 0 30px 60px -30px rgba(14,59,37,0.35);
+}
+
+.btn-gold {
+  background: linear-gradient(180deg, var(--velora-gold-bright), var(--velora-gold));
+  color: var(--velora-forest);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(14,59,37,0.15);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn-gold:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 12px 30px -10px rgba(201,161,74,0.55); }
+
+.btn-forest {
+  background: var(--velora-forest);
+  color: var(--velora-cream);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform .2s ease, background .2s ease;
+}
+.btn-forest:hover { background: var(--velora-green); transform: translateY(-1px); }
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  font-weight: 600;
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s;
+}
+.btn-whatsapp:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: 0 12px 30px -10px rgba(37,211,102,0.55); }
+
+.float-wa {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 60;
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  background: #25D366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 18px 40px -8px rgba(37,211,102,0.55);
+  animation: pulse-wa 2.4s infinite;
+}
+@keyframes pulse-wa {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+  70%  { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+.leaf-pattern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,0.06) 0, transparent 30%),
+    radial-gradient(circle at 88% 80%, rgba(201,161,74,0.18) 0, transparent 40%);
+  pointer-events: none;
+}
+
+.shine-divider { background: linear-gradient(90deg, transparent, rgba(201,161,74,0.55), transparent); height: 1px; }
+
+@keyframes festiveShimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp .8s ease both; }
+.fade-up.delay-1 { animation-delay: .1s; }
+.fade-up.delay-2 { animation-delay: .2s; }
+.fade-up.delay-3 { animation-delay: .3s; }
+
+.cat-pill {
+  border: 1px solid rgba(14,59,37,0.15);
+  background: #fff;
+  color: var(--velora-forest);
+  transition: all .25s ease;
+}
+.cat-pill[data-active="true"] {
+  background: var(--velora-forest);
+  color: var(--velora-cream);
+  border-color: var(--velora-forest);
+}
+.cat-pill:hover { border-color: var(--velora-gold); }
+
+.prod-img-wrap { position: relative; overflow: hidden; background: linear-gradient(180deg, #0a0a0c, #18181d); }
+.prod-img-wrap img { transition: transform .8s cubic-bezier(.2,.8,.2,1); width: 100%; height: 100%; object-fit: cover; }
+.card-luxury:hover .prod-img-wrap img { transform: scale(1.06); }
+
+.badge-gold {
+  background: linear-gradient(180deg, #f0d684, #c9a14a);
+  color: var(--velora-forest);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(14,59,37,0.18);
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--velora-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  font-weight: 600;
+}
+.section-eyebrow::before,
+.section-eyebrow::after {
+  content: "";
+  width: 28px; height: 1px;
+  background: var(--velora-gold);
+  opacity: .6;
+}
+
+@layer base {
+  [data-debug-wrapper="true"] {
+    display: contents !important;
+  }
+}

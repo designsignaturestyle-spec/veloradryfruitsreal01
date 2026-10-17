@@ -1,0 +1,5 @@
+.App {
+  text-align: left;
+  background-color: var(--velora-cream);
+  min-height: 100vh;
+}

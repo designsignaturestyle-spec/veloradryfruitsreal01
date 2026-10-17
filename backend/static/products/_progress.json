@@ -1,0 +1,538 @@
+{
+  "results": {
+    "almond-jumbo": {
+      "ok": true,
+      "info": "cached",
+      "name": "Almond Jumbo"
+    },
+    "almond-sonara": {
+      "ok": true,
+      "info": "cached",
+      "name": "Almond Sonara"
+    },
+    "mamra-almond": {
+      "ok": true,
+      "info": "cached",
+      "name": "Mamra Almond"
+    },
+    "almond-regular": {
+      "ok": true,
+      "info": "cached",
+      "name": "Almond Regular"
+    },
+    "salted-almonds": {
+      "ok": true,
+      "info": "cached",
+      "name": "Salted Almonds"
+    },
+    "cashew-jumbo-roasted": {
+      "ok": true,
+      "info": "cached",
+      "name": "Cashew Jumbo Roasted"
+    },
+    "cashew-regular": {
+      "ok": true,
+      "info": "cached",
+      "name": "Cashew Regular"
+    },
+    "cashew-special": {
+      "ok": true,
+      "info": "cached",
+      "name": "Cashew Special"
+    },
+    "cashew-slices": {
+      "ok": true,
+      "info": "cached",
+      "name": "Cashew Slices"
+    },
+    "cashew-classic": {
+      "ok": true,
+      "info": "cached",
+      "name": "Cashew Classic"
+    },
+    "salted-cashews": {
+      "ok": true,
+      "info": "cached",
+      "name": "Salted Cashews"
+    },
+    "red-chilli-cashews": {
+      "ok": true,
+      "info": "cached",
+      "name": "Red Chilli Cashews"
+    },
+    "pepper-cashews": {
+      "ok": true,
+      "info": "cached",
+      "name": "Pepper Cashews"
+    },
+    "pista-plain-roasted": {
+      "ok": true,
+      "info": "cached",
+      "name": "Pista Plain Roasted"
+    },
+    "pista-california": {
+      "ok": true,
+      "info": "cached",
+      "name": "Pista California"
+    },
+    "walnut-kernel": {
+      "ok": true,
+      "info": "cached",
+      "name": "Walnut Kernel"
+    },
+    "pista-akbari": {
+      "ok": true,
+      "info": "cached",
+      "name": "Pista Akbari"
+    },
+    "walnut-chilli-snow-white": {
+      "ok": true,
+      "info": "cached",
+      "name": "Walnut Chilli Snow White"
+    },
+    "hazelnuts": {
+      "ok": true,
+      "info": "cached",
+      "name": "Hazelnuts"
+    },
+    "pecan-nuts": {
+      "ok": true,
+      "info": "cached",
+      "name": "Pecan Nuts"
+    },
+    "brazil-nuts": {
+      "ok": true,
+      "info": "cached",
+      "name": "Brazil Nuts"
+    },
+    "macadamia-nuts": {
+      "ok": true,
+      "info": "cached",
+      "name": "Macadamia Nuts"
+    },
+    "black-raisins": {
+      "ok": true,
+      "info": "cached",
+      "name": "Black Raisins"
+    },
+    "raisin-indian": {
+      "ok": true,
+      "info": "cached",
+      "name": "Raisin Indian"
+    },
+    "raisins-special-natala": {
+      "ok": true,
+      "info": "cached",
+      "name": "Raisins Special Natala"
+    },
+    "raisin-afghan": {
+      "ok": true,
+      "info": "cached",
+      "name": "Raisin Afghan"
+    },
+    "dry-dates": {
+      "ok": true,
+      "info": "cached",
+      "name": "Dry Dates"
+    },
+    "ajwa-dates": {
+      "ok": true,
+      "info": "cached",
+      "name": "Ajwa Dates"
+    },
+    "medjool-dates": {
+      "ok": true,
+      "info": "cached",
+      "name": "Medjool Dates"
+    },
+    "saffawi-dates": {
+      "ok": true,
+      "info": "cached",
+      "name": "Saffawi Dates"
+    },
+    "mabroom-dates": {
+      "ok": true,
+      "info": "cached",
+      "name": "Mabroom Dates"
+    },
+    "sukkari-dates": {
+      "ok": true,
+      "info": "cached",
+      "name": "Sukkari Dates"
+    },
+    "arabian-seedless-dates": {
+      "ok": true,
+      "info": "cached",
+      "name": "Arabian Seedless Dates"
+    },
+    "anjeer-jumbo": {
+      "ok": true,
+      "info": "cached",
+      "name": "Anjeer Jumbo"
+    },
+    "anjeer-classic": {
+      "ok": true,
+      "info": "cached",
+      "name": "Anjeer Classic"
+    },
+    "anjeer-big": {
+      "ok": true,
+      "info": "cached",
+      "name": "Anjeer Big"
+    },
+    "apricot-turkel": {
+      "ok": true,
+      "info": "cached",
+      "name": "Apricot Turkel"
+    },
+    "apricot-bold": {
+      "ok": true,
+      "info": "cached",
+      "name": "Apricot Bold"
+    },
+    "cherry-dried": {
+      "ok": true,
+      "info": "cached",
+      "name": "Cherry Dried"
+    },
+    "mango-dried": {
+      "ok": true,
+      "info": "cached",
+      "name": "Mango Dried"
+    },
+    "kiwi-dried": {
+      "ok": true,
+      "info": "cached",
+      "name": "Kiwi Dried"
+    },
+    "blackberry-dried": {
+      "ok": true,
+      "info": "cached",
+      "name": "Blackberry Dried"
+    },
+    "strawberry-dried": {
+      "ok": true,
+      "info": "cached",
+      "name": "Strawberry Dried"
+    },
+    "prunes": {
+      "ok": true,
+      "info": "cached",
+      "name": "Prunes"
+    },
+    "cranberries": {
+      "ok": true,
+      "info": "cached",
+      "name": "Cranberries"
+    },
+    "pineapple-dried": {
+      "ok": true,
+      "info": "cached",
+      "name": "Pineapple Dried"
+    },
+    "mixed-fruits": {
+      "ok": true,
+      "info": "cached",
+      "name": "Mixed Fruits"
+    },
+    "basil-sabja-seeds": {
+      "ok": true,
+      "info": "cached",
+      "name": "Basil Sabja Seeds"
+    },
+    "blueberries": {
+      "ok": true,
+      "info": "cached",
+      "name": "Blueberries"
+    },
+    "white-till": {
+      "ok": true,
+      "info": "cached",
+      "name": "White Till"
+    },
+    "black-till": {
+      "ok": true,
+      "info": "cached",
+      "name": "Black Till"
+    },
+    "kalonji-seed": {
+      "ok": true,
+      "info": "cached",
+      "name": "Kalonji Seed"
+    },
+    "white-till-natti": {
+      "ok": true,
+      "info": "cached",
+      "name": "White Till Natti"
+    },
+    "ajwain": {
+      "ok": true,
+      "info": "cached",
+      "name": "Ajwain"
+    },
+    "poppy-seed-khus-khus": {
+      "ok": true,
+      "info": "cached",
+      "name": "Poppy Seed Khus Khus"
+    },
+    "muskmelon-seeds": {
+      "ok": true,
+      "info": "cached",
+      "name": "Muskmelon Seeds"
+    },
+    "pumpkin-seeds": {
+      "ok": true,
+      "info": "cached",
+      "name": "Pumpkin Seeds"
+    },
+    "flax-seeds": {
+      "ok": true,
+      "info": "cached",
+      "name": "Flax Seeds"
+    },
+    "sunflower-seeds": {
+      "ok": true,
+      "info": "cached",
+      "name": "Sunflower Seeds"
+    },
+    "watermelon-seeds": {
+      "ok": true,
+      "info": "cached",
+      "name": "Watermelon Seeds"
+    },
+    "chia-seeds": {
+      "ok": true,
+      "info": "cached",
+      "name": "Chia Seeds"
+    },
+    "alive-seeds": {
+      "ok": true,
+      "info": "cached",
+      "name": "Alive Seeds"
+    },
+    "seeds-mix": {
+      "ok": true,
+      "info": "cached",
+      "name": "Seeds Mix"
+    },
+    "methi-seeds": {
+      "ok": true,
+      "info": "cached",
+      "name": "Methi Seeds"
+    },
+    "cloves": {
+      "ok": true,
+      "info": "cached",
+      "name": "Cloves"
+    },
+    "black-pepper": {
+      "ok": true,
+      "info": "cached",
+      "name": "Black Pepper"
+    },
+    "shahi-jeera": {
+      "ok": true,
+      "info": "cached",
+      "name": "Shahi Jeera"
+    },
+    "japatri": {
+      "ok": true,
+      "info": "cached",
+      "name": "Japatri"
+    },
+    "bay-leaf": {
+      "ok": true,
+      "info": "cached",
+      "name": "Bay Leaf"
+    },
+    "cinnamon": {
+      "ok": true,
+      "info": "cached",
+      "name": "Cinnamon"
+    },
+    "star-anise": {
+      "ok": true,
+      "info": "cached",
+      "name": "Star Anise"
+    },
+    "garam-masala-powder": {
+      "ok": true,
+      "info": "cached",
+      "name": "Garam Masala Powder"
+    },
+    "cardamom": {
+      "ok": true,
+      "info": "cached",
+      "name": "Cardamom"
+    },
+    "turmeric-powder": {
+      "ok": true,
+      "info": "cached",
+      "name": "Turmeric Powder"
+    },
+    "marathi-mog": {
+      "ok": true,
+      "info": "cached",
+      "name": "Marathi Mog"
+    },
+    "misri-white": {
+      "ok": true,
+      "info": "cached",
+      "name": "Misri White"
+    },
+    "misri-red": {
+      "ok": true,
+      "info": "cached",
+      "name": "Misri Red"
+    },
+    "diamond-sugar": {
+      "ok": true,
+      "info": "cached",
+      "name": "Diamond Sugar"
+    },
+    "souff": {
+      "ok": true,
+      "info": "cached",
+      "name": "Souff"
+    },
+    "makhana-plain": {
+      "ok": true,
+      "info": "cached",
+      "name": "Makhana Plain"
+    },
+    "mexican-bites": {
+      "ok": true,
+      "info": "cached",
+      "name": "Mexican Bites"
+    },
+    "party-snacks": {
+      "ok": true,
+      "info": "cached",
+      "name": "Party Snacks"
+    },
+    "avalaki-mix": {
+      "ok": true,
+      "info": "cached",
+      "name": "Avalaki Mix"
+    },
+    "amla-chatpata": {
+      "ok": true,
+      "info": "cached",
+      "name": "Amla Chatpata"
+    },
+    "muesli": {
+      "ok": true,
+      "info": "cached",
+      "name": "Muesli"
+    },
+    "protein-beans": {
+      "ok": true,
+      "info": "cached",
+      "name": "Protein Beans"
+    },
+    "protein-booster": {
+      "ok": true,
+      "info": "cached",
+      "name": "Protein Booster"
+    },
+    "amla-honey": {
+      "ok": true,
+      "info": "cached",
+      "name": "Amla Honey"
+    },
+    "gond-laddu": {
+      "ok": true,
+      "info": "cached",
+      "name": "Gond Laddu"
+    },
+    "indian-mango-bar": {
+      "ok": true,
+      "info": "cached",
+      "name": "Indian Mango Bar"
+    },
+    "amla-sweet": {
+      "ok": true,
+      "info": "cached",
+      "name": "Amla Sweet"
+    },
+    "pancharattan": {
+      "ok": true,
+      "info": "cached",
+      "name": "Pancharattan"
+    },
+    "power-mix": {
+      "ok": true,
+      "info": "cached",
+      "name": "Power Mix"
+    },
+    "dry-fruits-mix": {
+      "ok": true,
+      "info": "cached",
+      "name": "Dry Fruits Mix"
+    },
+    "mixed-vegetables": {
+      "ok": true,
+      "info": "cached",
+      "name": "Mixed Vegetables"
+    },
+    "gond-katira": {
+      "ok": true,
+      "info": "cached",
+      "name": "Gond Katira"
+    },
+    "stone-chocolates": {
+      "ok": true,
+      "info": "cached",
+      "name": "Stone Chocolates"
+    },
+    "vdf-mixed-chocolates": {
+      "ok": true,
+      "info": "cached",
+      "name": "VDF Mixed Chocolates"
+    },
+    "vdf-dark-crackle-chocolates": {
+      "ok": true,
+      "info": "cached",
+      "name": "VDF Dark Crackle Chocolates"
+    },
+    "vdf-fruits-n-nut-chocolates": {
+      "ok": true,
+      "info": "cached",
+      "name": "VDF Fruits N Nut Chocolates"
+    },
+    "vdf-butterscotch-chocolates": {
+      "ok": true,
+      "info": "cached",
+      "name": "VDF Butterscotch Chocolates"
+    },
+    "vdf-dates-and-almond-chocolates": {
+      "ok": true,
+      "info": "cached",
+      "name": "VDF Dates And Almond Chocolates"
+    },
+    "vdf-nutella-chocolates": {
+      "ok": true,
+      "info": "cached",
+      "name": "VDF Nutella Chocolates"
+    },
+    "vdf-hazelnut-chocolates": {
+      "ok": true,
+      "info": "cached",
+      "name": "VDF Hazelnut Chocolates"
+    },
+    "vdf-almonds-bites-chocolates": {
+      "ok": true,
+      "info": "cached",
+      "name": "VDF Almonds Bites Chocolates"
+    },
+    "vdf-orange-chocolates": {
+      "ok": true,
+      "info": "cached",
+      "name": "VDF Orange Chocolates"
+    }
+  },
+  "started_at": 1781085081.3630407,
+  "total": 106,
+  "done": 106,
+  "finished_at": 1781085081.429919
+}
